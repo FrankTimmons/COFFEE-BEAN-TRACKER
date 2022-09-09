@@ -5,8 +5,10 @@ import Bean from "./Bean";
 function BeanList(props){
   return(
     <React.Fragment>
+      <hr/>
       {props.beanList.map((bean) =>
         <Bean
+          whenBeanClicked={props.onBeanSelection}
           name={bean.name}
           price={bean.price}
           origin={bean.origin}
@@ -19,8 +21,9 @@ function BeanList(props){
   );
 }
 
-BeanList.props = {
-  beanList: PropTypes.array
+BeanList.propTypes = {
+  beanList: PropTypes.array,
+  onBeanSelection: PropTypes.func
 }
 
 export default BeanList;
