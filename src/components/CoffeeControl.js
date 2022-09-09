@@ -31,18 +31,23 @@ class CoffeeControl extends React.Component {
                   formVisibleOnPage: false });
   }
 
+  handleChangingSelectedBean = (id) => {
+    const newSelectedBean = this.state.mainBeanList.filter(bean => bean.id === id)[0];
+    this.setState({selectedBean: newSelectedBean});
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
 
     if (this.state.selectedBean != null) {
-      currentlyVisibleState = <BeanDetail />
+      currentlyVisibleState = <BeanDetail bean = {this.selectedBean} />
       buttonText = "Return to Bean List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewBeanForm onNewBeanCreation = {this.handleAddingNewBeanToList} />;
       buttonText = "Return to Bean List";
     } else {
-      currentlyVisibleState = <BeanList beanList = {this.mainBeanList}/>;
+      currentlyVisibleState = <BeanList beanList = {this.mainBeanList} onBeanSelection = {this.handleChangingSelectedBean}/>;
       buttonText = "Add Bean";
     }
 
