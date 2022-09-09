@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Bean from "./Bean";
 
 function BeanList(props){
   return(
