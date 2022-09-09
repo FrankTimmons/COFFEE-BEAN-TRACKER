@@ -26,6 +26,12 @@ class CoffeeControl extends React.Component {
       currentlyVisibleState = <BeanList beanList = {this.mainBeanList}/>;
       buttonText = "Add Bean";
     }
+
+    return (
+      <React.Fragment>
+        {currentlyVisibleState}
+      </React.Fragment>
+    );
   }
 }
 
