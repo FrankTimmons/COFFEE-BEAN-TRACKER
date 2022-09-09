@@ -12,6 +12,25 @@ class CoffeeControl extends React.Component {
     }
   }
 
+  handleClick = () => {
+    if (this.state.selectedTicket != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedTicket: null
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
+    }
+  }
+
+  handleAddingNewBeanToList = (newBean) => {
+    const newMainBeanList = this.state.mainBeanList.concat(newBean);
+    this.setState({mainBeanList: newMainBeanList,
+                  formVisibleOnPage: false });
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -20,7 +39,7 @@ class CoffeeControl extends React.Component {
       currentlyVisibleState = <BeanDetail />
       buttonText = "Return to Bean List";
     } else if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewBeanForm />;
+      currentlyVisibleState = <NewBeanForm onNewBeanCreation = {this.handleAddingNewBeanToList} />;
       buttonText = "Return to Bean List";
     } else {
       currentlyVisibleState = <BeanList beanList = {this.mainBeanList}/>;
@@ -30,6 +49,7 @@ class CoffeeControl extends React.Component {
     return (
       <React.Fragment>
         {currentlyVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
   }
