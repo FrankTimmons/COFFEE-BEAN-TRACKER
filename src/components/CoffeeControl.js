@@ -1,5 +1,7 @@
 import React from "react";
 import BeanList from "./BeanList";
+import BeanForm from "./BeanForm";
+import BeanDetail from "./BeanDetail";
 
 class CoffeeControl extends React.Component {
 
@@ -41,13 +43,13 @@ class CoffeeControl extends React.Component {
     let buttonText = null;
 
     if (this.state.selectedBean != null) {
-      currentlyVisibleState = <BeanDetail bean = {this.selectedBean} />
+      currentlyVisibleState = <BeanDetail bean = {this.state.selectedBean} />
       buttonText = "Return to Bean List";
     } else if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewBeanForm onNewBeanCreation = {this.handleAddingNewBeanToList} />;
+      currentlyVisibleState = <BeanForm onNewBeanCreation = {this.handleAddingNewBeanToList} />;
       buttonText = "Return to Bean List";
     } else {
-      currentlyVisibleState = <BeanList beanList = {this.mainBeanList} onBeanSelection = {this.handleChangingSelectedBean}/>;
+      currentlyVisibleState = <BeanList beanList = {this.state.mainBeanList} onBeanSelection = {this.handleChangingSelectedBean}/>;
       buttonText = "Add Bean";
     }
 
