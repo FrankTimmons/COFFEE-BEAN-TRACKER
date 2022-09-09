@@ -1,4 +1,5 @@
 import React from "react";
+import BeanList from "./BeanList";
 
 class CoffeeControl extends React.Component {
 
@@ -22,7 +23,7 @@ class CoffeeControl extends React.Component {
       currentlyVisibleState = <NewBeanForm />;
       buttonText = "Return to Bean List";
     } else {
-      currentlyVisibleState = <BeanList />;
+      currentlyVisibleState = <BeanList beanList = {this.mainBeanList}/>;
       buttonText = "Add Bean";
     }
   }
