@@ -10,8 +10,8 @@ function BeanForm(props) {
       {
         name: event.target.name.value, 
         roast: event.target.roast.value, 
-        origin: event.target.issue.value,
-        price: event.target.issue.value,
+        origin: event.target.origin.value,
+        price: event.target.price.value,
         pounds: 130,
         id: v4()
       }
